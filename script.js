@@ -26,3 +26,28 @@ function renderProducts() {
 // Task 3: Implement an event listener to trigger the display of products when the page loads.
 
 window.addEventListener("load", renderProducts);
+
+
+// 2. Form Manipulation with JavaScript
+// Task 2: Write JavaScript code to handle form submissions and store user input in an object.
+// Task 3: Implement form validation to ensure that all required fields are filled before submission.
+
+let form = document.getElementById("contact-form");
+
+form.addEventListener("submit", function(event) {
+    if (!form.checkValidity()) {
+        event.preventDefault();
+        alert("Please fill out all required fields.");
+        return;
+    }
+
+    event.preventDefault();
+    let formData = new FormData(form);
+    let contact = {};
+    formData.forEach((value, key) => {
+        contact[key] = value;
+    });
+    console.log(contact);
+    form.reset();
+});
+
